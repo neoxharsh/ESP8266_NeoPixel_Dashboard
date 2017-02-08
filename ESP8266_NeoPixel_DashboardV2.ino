@@ -21,6 +21,7 @@ void loop() {
   {
     blynkConnected = true;
     Blynk.run();
+    pingCheck = false
   }
   else
   {
