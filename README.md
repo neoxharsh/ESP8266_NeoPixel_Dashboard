@@ -49,7 +49,7 @@ Arrange the Widgets according to the following image making sure that you have u
 <img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/Blynk%20App%20Setting%20Tab2.PNG" width="250">
 
 
-After that is done, now you need to manually add the list of effects in the effect list drop down widget, as follow
+After that is done, now you need to manually add the list of effects in the effect list drop down widget, as follow in the same order.
 
 STATIC                   
 BLINK                    
@@ -70,7 +70,7 @@ RUNNING LIGHTS
 TWINKLE                 
 TWINKLE RANDOM          
 TWINKLE FADE            
-TWINKLE FADE RANDOM     
+TWINKLE FADE RANDOM 
 SPARKLE                 
 FLASH SPARKLE           
 HYPER SPARKLE           
@@ -96,3 +96,70 @@ COMET
 FIREWORKS               
 FIREWORKS RANDOM        
 MERRY CHRISTMAS         
+
+
+The Blynk Library make some blocking network calls, to make sure that it is connected to the blynk server, but when we are making certain projects like this one, we want Blynk to be an helper not the main king, that completely stops all other executuion if it is not able to find its master. 
+
+So, in this program I have used a neat trick, I have used an AsyncPing Library that helps to make sure that the device is connected to the internet and not just connected to the WiFi. This is achieved by making the Blynk.connect() call only to be executed when the Ping to the Google Server returns true. This ensures that the sketch completely do not become a blocking sketch, but there are some catch, such as when the blynk server itself is down, than it will stop the sketch, as the device is able to access the internet, but not the blynk server. Some Changes can be made to the sketch, so that if the connection to the blynk server is not achieved, then wait for sometime like 1 hour before reconnecting. So let cut short the crap and let me show you the trick.... Use this library AsyncPing (https://github.com/akaJes/AsyncPing)
+ 
+```C
+#include <ESP8266WiFi.h>
+#include "AsyncPing.h"
+AsyncPing ping;
+
+//Check if internet is up an running.
+bool pingCheck = false,
+     blynkConnected = false;
+
+//Check if Blynk needs to be connected or not, only if internet is up and running, not only wifi.
+void blynkCheckEvent()
+{
+
+  if (blynkConnected == false && pingCheck == false)
+  {
+    ping.begin("8.8.8.8");
+  }
+
+  if (blynkConnected == false && pingCheck == true)
+  {
+    Blynk.connect();
+  }
+}
+
+void setup()
+{
+  Blynk.config(auth);
+  if ( Blynk.connect())
+  {
+    blynkConnected = true;
+  }
+  //The code to make sure that the reconnect code is non blocking, this is achieved by this awesome library that helps us ping in an async manner.
+  ping.on(false, [](const AsyncPingResponse & response) {
+    if (response.total_recv > 0)
+    {
+      Serial.println("Ping Sucessfull");
+      pingCheck = true;
+    }
+    else
+    {
+      pingCheck = false;
+      Serial.println("Ping UnSucessfull");
+    }
+
+    return true; //doesn't matter
+  });
+}
+
+void loop()
+{
+  if (Blynk.connected())
+  {
+    blynkConnected = true;
+    Blynk.run();
+  }
+  else
+  {
+    blynkConnected = false;
+  }
+}
+```
