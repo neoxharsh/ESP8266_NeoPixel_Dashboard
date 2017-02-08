@@ -4,10 +4,14 @@ This is an ESP8266 based Neopixel dashboard, it shows current time, can show a c
 Moreoever, the color and brightness of the message as well as time can be changed. The speed of the message scroll as well as effects
 can also be changed dynamically. The time is RTC backed and The whole dashboard is LiIon Battery Backed.
 
+[![YouTube](https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img4.jpg)](https://youtu.be/BybM1WzhSAs)
 <img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img1.jpg" width="350">
 <img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img2.jpg" width="350">
 <img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img3.jpg" width="350">
-<img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img4.gif" width="350">
+<img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img4.gif" width="350" >
+
+ (https://youtu.be/BybM1WzhSAs)
+
 
 The construction consist of following basic parts.
 
