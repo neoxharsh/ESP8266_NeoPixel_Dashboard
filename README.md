@@ -4,8 +4,10 @@ This is an ESP8266 based Neopixel dashboard, it shows current time, can show a c
 Moreoever, the color and brightness of the message as well as time can be changed. The speed of the message scroll as well as effects
 can also be changed dynamically. The time is RTC backed and The whole dashboard is LiIon Battery Backed.
 
-
-
+<img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img1.jpg" width="350">
+<img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img2.jpg" width="350">
+<img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img3.jpg" width="350">
+<img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/img4.gif" width="350">
 
 The construction consist of following basic parts.
 
@@ -43,3 +45,54 @@ Then upload the code to the ESP.
 
 Arrange the Widgets according to the following image making sure that you have used the exact same virtual pin, and if you want to use your own setup, you are good to go, just make sure to make chages in the defines.h file accordingly. 
 
+<img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/Blynk%20App%20Setting%20Tab1.PNG" width="250">
+<img src="https://github.com/neoxharsh/ESP8266_NeoPixel_Dashboard/blob/master/img/Blynk%20App%20Setting%20Tab2.PNG" width="250">
+
+
+After that is done, now you need to manually add the list of effects in the effect list drop down widget, as follow
+
+STATIC                   
+BLINK                    
+BREATH                   
+COLOR WIPE               
+COLOR WIPE RANDOM        
+RANDOM COLOR            
+SINGLE DYNAMIC           
+MULTI DYNAMIC            
+RAINBOW                  
+RAINBOW CYCLE            
+SCAN                    
+DUAL SCAN              
+FADE                    
+HEATER CHASE           
+THEATER CHASE RAINBOW  
+RUNNING LIGHTS          
+TWINKLE                 
+TWINKLE RANDOM          
+TWINKLE FADE            
+TWINKLE FADE RANDOM     
+SPARKLE                 
+FLASH SPARKLE           
+HYPER SPARKLE           
+STROBE                  
+STROBE RAINBOW          
+MULTI STROBE            
+BLINK RAINBOW           
+CHASE WHITE             
+CHASE COLOR             
+CHASE RANDOM            
+CHASE RAINBOW           
+CHASE FLASH             
+CHASE FLASH RANDOM      
+CHASE RAINBOW WHITE     
+CHASE BLACKOUT          
+CHASE BLACKOUT RAINBOW  
+COLOR SWEEP RANDOM      
+RUNNING COLOR           
+RUNNING RED BLUE        
+RUNNING RANDOM          
+LARSON SCANNER          
+COMET                   
+FIREWORKS               
+FIREWORKS RANDOM        
+MERRY CHRISTMAS         
