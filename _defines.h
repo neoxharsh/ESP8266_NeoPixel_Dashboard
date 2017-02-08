@@ -72,5 +72,5 @@ int x = 1;
 uint8_t Timer[TOTAL_TIMER];
 
 //The Auth token for Blynk. Add your own token here.
-char auth[] = "";
+char auth[] = "18c41fa764cb47439dce206f8e42527d";
 
