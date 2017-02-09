@@ -8,6 +8,7 @@
 SimpleTimer timer;
 void blynkInitEvent();
 void blynkCheckEvent();
+void syncTime();
 void timerInit()
 {
   Timer[MSG_TIMER] =  timer.setInterval(10, MSGEvent);
@@ -17,6 +18,7 @@ void timerInit()
   timer.setInterval(10, TimeUpdateEvent);
   timer.setTimeout(5000, TimeAutoStartEvent);
   timer.setInterval(10000, blynkCheckEvent);
+  timer.setInterval(86400000,syncTime);
 }
 
 
