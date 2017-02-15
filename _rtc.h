@@ -10,12 +10,16 @@
 #include <RtcDS1307.h>
 #include <SimpleTimer.h>
 extern SimpleTimer timer;
+
+void ringAlarm(int,int,String);
+
 RtcDS1307<TwoWire> Rtc(Wire);
 
 //Defines the init of RTC
 void rtcInit()
 {
   Rtc.Begin();
+  pinMode (BUZZER_PIN, OUTPUT);
 }
 
 //Prints the date and time to the console
@@ -54,6 +58,7 @@ void TimeUpdateEvent()
   }
   timeIs = String(hour) + ":" + String(minutes) + AMPM;
   // Serial.println(timeIs + String(seconds));
+  ringAlarm(hour,minutes,AMPM);
 }
 
 //Event that is fired once the unit starts.

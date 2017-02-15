@@ -30,29 +30,61 @@ void matrixInit()
 //Runs evertime the msg or time needs to be displayed
 void MSGEvent()
 {
-  if (State != START_STATE)
-  {
-    matrix->fillScreen(0);
-    matrix->setCursor(x, 0);
-    matrix->setTextColor(matrix->Color(red, green, blue));
-    int len;
-    if (State == MSG_STATE)
-    {
-      len = msg.length() * 6;
-      matrix->print(msg);
-    }
-    if (State == TIME_STATE)
-    {
-      len = timeIs.length() * 6;
-      matrix->print(timeIs);
-    }
 
-    if (--x < -len) {
-      x = matrix->width();
+  if (alarmOn == true)
+  {
+    if (State != START_STATE)
+    {
+      matrix->fillScreen(0);
+      matrix->setCursor(x, 0);
+      matrix->setTextColor(matrix->Color(red, green, blue));
+      int len;
+      if (State == MSG_STATE)
+      {
+        len = msg.length() * 6;
+        matrix->print(msg);
+      }
+      if (State == TIME_STATE)
+      {
+        len = timeIs.length() * 6;
+        matrix->print(timeIs);
+      }
+
+      if (--x < -len) {
+        x = matrix->width();
+      }
+      matrix->drawPixel(7, 7, matrix->Color(255, 0, 0));
+      matrix->show();
+      delay(textSpeed);
     }
-    matrix->show();
-    delay(textSpeed);
   }
+  else
+  {
+    if (State != START_STATE)
+    {
+      matrix->fillScreen(0);
+      matrix->setCursor(x, 0);
+      matrix->setTextColor(matrix->Color(red, green, blue));
+      int len;
+      if (State == MSG_STATE)
+      {
+        len = msg.length() * 6;
+        matrix->print(msg);
+      }
+      if (State == TIME_STATE)
+      {
+        len = timeIs.length() * 6;
+        matrix->print(timeIs);
+      }
+
+      if (--x < -len) {
+        x = matrix->width();
+      }
+      matrix->show();
+      delay(textSpeed);
+    }
+  }
+
 }
 
 #endif

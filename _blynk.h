@@ -3,6 +3,7 @@
 
 
 WidgetTerminal terminal(TEXT_SENDER_WIDGET);
+
 #include <ESP8266WiFi.h>
 #include "_blynkWidgets.h"
 #include "AsyncPing.h"
@@ -72,6 +73,7 @@ void blynkSync()
   Blynk.virtualWrite(OTA_BUTTON_WIDGET, LOW);
   Blynk.virtualWrite(WIFI_CONFIG_BUTTON_WIDGET, LOW);
   Blynk.virtualWrite(SHOW_TIME_BUTTON_WIDGET, LOW);
+  Blynk.virtualWrite(ALARM_BUTTON_WIDGET, LOW);
   terminal.println(F(" "));
   terminal.flush();
   Serial.println("Terminal Flush");

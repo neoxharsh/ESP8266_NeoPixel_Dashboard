@@ -6,7 +6,7 @@
 #include <WiFiUdp.h>
 #endif
 
-
+void syncTime();
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, 19800);
 
@@ -14,6 +14,7 @@ NTPClient timeClient(ntpUDP, 19800);
 void timeInit()
 {
   timeClient.begin();
+  syncTime();
 }
 
 

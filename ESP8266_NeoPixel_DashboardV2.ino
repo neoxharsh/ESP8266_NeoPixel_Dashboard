@@ -12,6 +12,7 @@ void setup() {
   timeInit();
   timerInit();
   blynkInit();
+  
 }
 
 void loop() {

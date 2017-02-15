@@ -6,8 +6,8 @@
 #define MATRIX_HEIGHT         8
 #define MATRIX_WIDTH          8
 #define LED_PIN               D3
-#define BUTTON_A              D5
-#define BUTTON_B              D7
+#define BUZZER_PIN            D5
+
 
 
 //Defines the total number of state that are present in the program
@@ -21,13 +21,16 @@
 #define TIME_STATE            5
 
 
+
 //Defines total number of timers that are implemented in the sketch
-#define TOTAL_TIMER           4
+#define TOTAL_TIMER           5
 
 #define MSG_TIMER             0
 #define FX_TIMER              1
 #define OTA_TIMER             2
 #define TIME_TIMER            3
+#define ALARM_TIMER           4
+
 
 
 //Defines all the Blynk Widgets placed in the app, and assign the Virtual pins that they are connected to
@@ -43,6 +46,9 @@
 #define SYNC_TIME_BUTTON_WIDGET           V9
 #define SHOW_TIME_BUTTON_WIDGET           V10
 #define WIFI_CONFIG_BUTTON_WIDGET         V11
+#define ALARM_INPUT_WIDGET                V12
+#define ALARM_BUTTON_WIDGET               V13
+
 
 //String Values for the Time as well as the MSG to be displayed
 String msg = " ", timeIs = "";
@@ -50,7 +56,9 @@ String msg = " ", timeIs = "";
 
 //BOOL check to make sure that OTA is initilized or not
 bool otaInitilized = false,
-     blynkConnected = false;
+     blynkConnected = false,
+     alarmOn = false,
+     alarmIsRunning = false;
 
 
 //Constant for the time server
@@ -66,7 +74,10 @@ uint8_t State = START_STATE,
         green = 255,
         blue = 255;
 
-int x = 1;
+int x = 1,
+    alarmHours = 0,
+    alarmMinutes = 0;
+
 
 //Array describing total number of timers.
 uint8_t Timer[TOTAL_TIMER];

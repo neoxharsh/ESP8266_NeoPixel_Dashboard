@@ -1,8 +1,57 @@
 #ifndef _BLYNKWIDGETS_H
 #define _BLYNKWIDGETS_H
 
+#include <SimpleTimer.h>
+extern SimpleTimer timer;
+
 //This are all the Blynk Widget callbacks.
 void wifiReset();
+
+BLYNK_WRITE(ALARM_INPUT_WIDGET) {
+
+  TimeInputParam t(param);
+  if (t.hasStartTime())
+  {
+    alarmHours = t.getStartHour();
+    alarmMinutes = t.getStartMinute();
+
+    Serial.println(String("Start: ") +
+                   t.getStartHour() + ":" +
+                   t.getStartMinute() + ":" +
+                   t.getStartSecond());
+  }
+
+  for (int i = 1; i <= 7; i++) {
+    if (t.isWeekdaySelected(i)) {
+      Serial.println(String("Day ") + i + " is selected");
+    }
+  }
+
+  Serial.println();
+}
+
+BLYNK_WRITE(ALARM_BUTTON_WIDGET) {
+  if (param.asInt() == HIGH)
+  {
+    alarmOn = true;
+  }
+  else
+  {
+    alarmOn = false;
+    if (timer.isEnabled(Timer[ALARM_TIMER]))
+    {
+      timer.disable(Timer[ALARM_TIMER]);
+      timer.disable(Timer[FX_TIMER]);
+      ws2812fx->stop();
+      Blynk.virtualWrite(FX_BUTTON_WIDGET, LOW);
+      alarmIsRunning = false;
+      timer.enable(Timer[MSG_TIMER]);
+      Blynk.virtualWrite(SHOW_TIME_BUTTON_WIDGET, HIGH);
+      Blynk.virtualWrite(TEXT_SCROLL_BUTTON_WIDGET, HIGH);
+    }
+  }
+
+}
 
 BLYNK_WRITE(BRIGHTNESS_WIDGET)
 {
