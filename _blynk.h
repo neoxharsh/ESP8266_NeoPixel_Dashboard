@@ -28,11 +28,6 @@ void blynkInit()
   Serial.println("Blynk Config End");
   blynkSync();
 
-//The code to make sure that the reconnect code is non blocking, this is achieved by this awesome library that helps us ping in an async manner.
-ping.on(true,[](const AsyncPingResponse& response){
-        return (response.answer);
-      });
-      
   ping.on(false, [](const AsyncPingResponse & response) {
     if (response.total_recv > 0)
     {
