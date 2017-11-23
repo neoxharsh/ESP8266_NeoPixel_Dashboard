@@ -21,7 +21,6 @@ The construction consist of following basic parts.
 
 The connection is straightforward, The Data In Pin of the matrix is connected to the D3 pin of NodeMCU. and the 5V Pin is connected to the 5V of battery charging circuit. This is to make sure that we do not fry the ESP. Protection diode needs to be placed between all the points, but I was lazy enough not to use one, as who cares even if I loose a cheap NodeMUC. All the connection are totally up to you, this is not the only way you can use it. 
 
-The Magic lies in the Code, The meat lies in the code. Code is everything !!!!!!......
 
 Before uploading the code make sure, you have the ESP9266 Arduino Core and that you have connected the ESP8266 to WiFi at least once, and do remember to use the libraries that I have included in this repository, the one that I have used have been modified a bit to be able to use it properly. The description is below. 
 
